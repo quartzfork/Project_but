@@ -35,6 +35,9 @@ while True:
     l.image = im1
     l.place(x=0, y=0)
     root.mainloop()
+    if data:
+        j += 1
+        print(j)
 
 
     #conn.send(data)
