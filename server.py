@@ -1,47 +1,38 @@
 import socket
-import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
+
 
 sock = socket.socket()
 sock.bind(('', 3139))
 sock.listen(1)
 conn, addr = sock.accept()
 
-print ('connected:', addr)
-
-i=['C:/Users/User/Pictures/istockphoto-974079490-612x612.jpg',"C:/Users/User/Pictures/scuba diving.jpg"]
+i=['C:/Users/User/Downloads/imgonline-com-ua-Resize-qEmDNe6eob97tMzx.jpg',"C:/Users/User/Downloads/imgonline-com-ua-Resize-e4P23QGX3VTk.jpg"]
 j=0
-while True:
 
+while True:
     data = conn.recv(1024)
 
-    if not data:
-        break
-    # im2 = ImageTk.PhotoImage(im2)
-    # l = Label(image=im2)
-    # l.image = im2
-    # l.place(x=0, y=0)
     root = Tk()
     root.title('картинка')
-    root.geometry('800x800')
+    root.geometry('450x600+500+100')
     root.resizable(0, 0)
     root.config(bg='black')
-
-    im1 = Image.open(i[j%2])
-
+    size = (600, 600)
+    im1 = Image.open(i[j % 2])
     im1 = ImageTk.PhotoImage(im1)
     l = Label(image=im1)
     l.image = im1
     l.place(x=0, y=0)
+    root.after(1300, lambda: root.destroy())
+
     root.mainloop()
+
+    if not data:
+        break
     if data:
-        j += 1
-        print(j)
-
-
-    #conn.send(data)
+        j+=1
 
 conn.close()
-
 
