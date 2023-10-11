@@ -2,19 +2,15 @@ import socket
 from tkinter import *
 import time
 
-#sock.close()
 
 def button_prog():
-    # sock = socket.socket()
-    # sock.connect(('192.168.43.112', 3139))
+    sock = socket.socket()
+    sock.connect(('192.168.43.112', 3139))
 
     def click():
-        print('hhhhh')
-        # sock.send(b'u')
-        # btn.config(text="Ждите")
-        time.sleep(1)
-        # btn.config(text="Жмите")
-
+        #print('hhhhh')
+        sock.send(b'u')
+        time.sleep(0.5)
 
     root = Tk()
     root.title('Кнопка')
